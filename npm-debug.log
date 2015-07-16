@@ -1,7 +1,7 @@
 0 info it worked if it ends with ok
 1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'start' ]
-2 info using npm@2.10.1
-3 info using node@v0.12.4
+2 info using npm@2.11.3
+3 info using node@v0.12.7
 4 verbose node symlink /usr/bin/node
 5 verbose run-script [ 'prestart', 'start', 'poststart' ]
 6 info prestart quiz@0.0.0
@@ -18,10 +18,10 @@
 10 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1087:5)
 11 verbose pkgid quiz@0.0.0
 12 verbose cwd /home/alejandro/Cursos/Desarrollo de servicios en la nube con HTML5, Javascript y node.js/proyectos/quiz
-13 error Linux 3.19.0-21-generic
+13 error Linux 3.19.0-22-generic
 14 error argv "/usr/bin/node" "/usr/bin/npm" "start"
-15 error node v0.12.4
-16 error npm  v2.10.1
+15 error node v0.12.7
+16 error npm  v2.11.3
 17 error code ELIFECYCLE
 18 error quiz@0.0.0 start: `node ./bin/www`
 18 error Exit status 1
