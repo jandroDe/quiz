@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var partials = require('express-partials');
 var methodOverride = require('method-override');
+var session = require('express-session');
 
 var routes = require('./routes/index');
 
@@ -23,9 +24,21 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cookieParser());
+app.use(cookieParser('Melocotón Rojo'));
+app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function(req,res, next){
+  // guardar ruta de vuelta login/logout
+  if (!req.path.match(/\/login|\/logout/)){
+    req.session.redir = req.path;
+  }
+  // hacer visible la sesión
+  res.locals.session = req.session;
+  next();
+});
+
 
 app.use('/', routes);
 
