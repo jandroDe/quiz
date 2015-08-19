@@ -23,8 +23,16 @@
 				<span><a href="/author">Créditos</a></span>
 			</nav>
 
-			<section class="main" id="s1">
-				<div><%- body %></div>
+		    <section class="main" id="s1">
+      			<% if (errors.length) { %>
+        		<span id='ErrorMsgs'>
+          		Errores: <br/>
+          		<% for (var i in errors) { %>
+            	<span> <%= errors[i].message %> </span><br/>
+      			<%    } %>
+      			</span>
+      			<%  }   %>
+      			<div><%- body%></div>
 			</section>
 
 			<footer class="main" id="f1">
