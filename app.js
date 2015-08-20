@@ -39,9 +39,24 @@ app.use(function(req,res, next){
   next();
 });
 
+// Control de expiración de tiempo de sesión
+// La sesión se define por la existencia de req.session.user
+// Si pasan más de 2*60000 milisegundos desde la ultima vez, entonces
+// hacer logout y volver a path anterior a login
+app.use(function (req, res, next){
+  if (req.session.user) {
+    var tiempo = 0;
+    if (req.session.tiempo) {tiempo = new Date - req.session.tiempo;}
+    req.session.tiempo = new Date - 0;
+    if (tiempo > 120000){
+      delete req.session.tiempo;
+      delete req.session.user;
+      res.redirect(req.session.redir.toString());
+    } else next(); // continuar
+  } else next();
+});
 
 app.use('/', routes);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
